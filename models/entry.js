@@ -13,6 +13,7 @@ const entrySchema = mongoose.Schema({
     },
     title: String,
     notes: String,
+    created:  {type: Date, default: Date.now},
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', // This one help us using the populate
