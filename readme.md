@@ -13,7 +13,7 @@ for /register and /login, the user data must be in the request body, in the form
 “password”: “password”  
 }    
 ```
-
+Sarah-JJ
 ```
 /login and /register send back a token in the response headers, in a field called ‘token’
 ```
@@ -40,4 +40,4 @@ for post and put, the entry data must be sent in the request body, in the form:
 }
 ```
 
- :four_leaf_clover:
+ :four_leaf_clover:  :sparkles:  :sparkles:
