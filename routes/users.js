@@ -7,10 +7,6 @@ const checkAuth = require('../middleware/checkAuth');
 const User = require('../models/user');
 
 
-router.get('/', (req, res) => {
-    res.json({'message': 'yhttps://www.youtube.com/watch?v=2k-9D4ZMU2s&t=510s'});
-});
-
 
 router.get('/:id', checkAuth, (req, res) => {
     User.findById(req.params.id).then(result => {
