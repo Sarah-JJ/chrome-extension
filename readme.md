@@ -6,13 +6,13 @@
     *  /:id (delete) (requires token) – delete user by id
     * /register (post) – add a user  
     * /login  (post): – get token
-
-for **/register** and **/login**, the user data must be in the request **body**, in the form:   
+```
+for /register and **/login**, the user data must be in the request **body**, in the form:   
 {   
 “email”: “example@something.com”,  
 “password”: “password”  
 }    
-
+```
 /api/users/login and /api/users/register will send back a token in the response **headers**, in a field called ‘token’  
 
      
