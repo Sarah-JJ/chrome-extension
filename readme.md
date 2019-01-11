@@ -1,4 +1,4 @@
-##API Routes: 
+## API Routes: 
 
 1. /api/users:  
     * /:id (get) – get user data by user id  
