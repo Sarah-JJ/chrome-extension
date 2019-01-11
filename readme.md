@@ -1,4 +1,4 @@
-## API Routes: 
+### API Routes
 
 1. /api/users:  
     * /:id (get) – get user data by user id  
@@ -40,3 +40,4 @@ for post and put, the entry data must be sent in the request body, in the form:
 }
 ```
 
+ :four_leaf_clover:
