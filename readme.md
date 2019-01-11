@@ -2,6 +2,8 @@
 
 1. /api/users:  
     * /:id (get) – get user data by user id  
+    * /:id (put) (requires token) – edit user data by id
+    *  /:id (delete) (requires token) – delete user by id
     * /register (post) – add a user  
     * /login  (post): – get token
 
@@ -12,10 +14,9 @@ for **/register** and **/login**, the user data must be in the request **body**,
 }    
 
 /api/users/login and /api/users/register will send back a token in the response **headers**, in a field called ‘token’  
-     /:id (put) (requires token) – edit user data by id
-     /:id (delete) (requires token) – delete user by id
+
      
-*the token must always be sent in the ‘authorization’ field in the headers as such: req.headers.authorization*
+*the token must always be sent in the **'authorization'** field in the **headers** as such: req.headers.authorization*
 
 2. /api/entries:
 
