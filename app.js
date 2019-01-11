@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const users = require('./routes/users');
+const entries = require('./routes/entries');
 const mongoose = require('mongoose');
 
 const morgan = require('morgan');
@@ -21,6 +22,7 @@ app.use(express.static('public'));
 // app.use(morgan('tiny'));
 
 app.use('/api/users', users);
+app.use('/api/entries', entries);
 
 // app.post('/:name', (req, res) => {
 //     console.log(req.body);
