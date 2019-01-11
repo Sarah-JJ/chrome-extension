@@ -15,11 +15,11 @@ for /register and /login, the user data must be in the request body, in the form
 ```
 
 ```
-/api/users/login and /api/users/register will send back a token in the response **headers**, in a field called ‘token’  
+/login and /register send back a token in the response headers, in a field called ‘token’
 ```
      
 ```     
-the token must always be sent in the **'authorization'** field in the **headers** as such: req.headers.authorization
+the token must always be sent in the 'authorization' field in the headers as such: req.headers.authorization
 ```
 2. /api/entries:
 
