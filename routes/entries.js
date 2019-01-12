@@ -3,6 +3,7 @@ const router = express.Router();
 const Joi = require('joi');
 const Entry = require('../models/entry');
 const checkAuth = require('../middleware/checkAuth');
+const getYoutubeTitle = require('get-youtube-title');
 
 
 // get all entries of a certain user sorted by creation date in a decending order (most recent to least recent)
@@ -26,31 +27,30 @@ router.get('/:id', checkAuth, (req, res) => {
     });
 });
 
-// find entries by title
-router.get('/title', checkAuth, (req, res) => {
-    // let title = req.query.
-    Entry.$where('this.title.includes("you")').exec((err, data) => {
-        if (data)
-            res.send(data);
-        else res.send(err);
-    })
-});
-
 
 // post an entry
 router.post('/', checkAuth, (req, res) => {
-    let entry = new Entry({
-        user: req.userId,
-        title: req.body.title,
-        url: req.body.url,
-        time: req.body.time,
-        notes: req.body.notes
-    });
-    entry.save().then(result => {
-        res.send(result);
-    }).catch(err => {
-        res.send(err);
-    });
+
+        let videoId = req.body.url.split('v=')[1];
+
+        console.log(videoId);
+        getYoutubeTitle(videoId, function (err, title) {
+
+            let entry = new Entry({
+                user: req.userId,
+                title: title,
+                url: req.body.url,
+                time: req.body.time,
+                notes: req.body.notes
+            });
+            entry.save().then(result => {
+                res.send(result);
+            }).catch(err => {
+                res.send(err);
+            });
+
+        });
+
 });
 
 
@@ -76,10 +76,30 @@ router.delete('/:id', checkAuth, (req, res) => {
 });
 
 
-// function validateEntry(entry) {
+// // find entries by title
+// router.get('/title', checkAuth, (req, res) => {
+//     // let title = req.query.
+//     Entry.$where('this.title.includes("you")').exec((err, data) => {
+//         if (data)
+//             res.send(data);
+//         else res.send(err);
+//     })
+// });
+
+
+// function getVideoTitle(id){
+//     return getYoutubeTitle(id, function (err, title) {
+//         console.log(title);
+//         return title;
+//     })
+// }
+
+//
+// function validateEntry(url) {
 //     const entrySchema = {
 //     };
-//     return Joi.validate(entry, entrySchema);
+//     return Joi.validate(url, entrySchema);
 // }
+
 
 module.exports = router;
