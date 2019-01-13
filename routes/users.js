@@ -64,7 +64,7 @@ router.post('/login', (req, res) => {
                 bcrypt.compare(req.body.password, result.password, function (err, response) {
                     if (response) {
                         let token = jwt.sign({"_id": result._id}, 'key');
-                        res.header({token: token}).send('User logged in');
+                        res.header({token: token}).json({"message": "user logged in", "userId": result._id});
                     } else {
                         res.status(400).send('Wrong email/password pair');
                     }
