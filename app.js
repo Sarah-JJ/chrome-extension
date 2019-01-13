@@ -24,9 +24,5 @@ app.use(express.static('public'));
 app.use('/api/users', users);
 app.use('/api/entries', entries);
 
-// app.post('/:name', (req, res) => {
-//     console.log(req.body);
-//     res.json({'name': req.params.name});
-// });
 
 app.listen(3000);
