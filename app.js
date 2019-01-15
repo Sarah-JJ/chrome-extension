@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 
 
 
-let port = process.env.port || 3000;
+let port = process.env.PORT || 3000;
 
 
 mongoose.connect('mongodb://admin22:admin22@ds149914.mlab.com:49914/chrome-extension',{useNewUrlParser: true}, (err) => {
