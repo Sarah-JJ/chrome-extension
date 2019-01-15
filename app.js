@@ -25,6 +25,12 @@ mongoose.connect('mongodb://admin22:admin22@ds149914.mlab.com:49914/chrome-exten
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
+
+app.use(function (req, res, next) {
+    console.log(req.body);
+    next()
+});
+
 // app.use(morgan('tiny'));
 
 app.use('/api/users', users);
