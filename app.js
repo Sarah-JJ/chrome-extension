@@ -24,5 +24,8 @@ app.use(express.static('public'));
 app.use('/api/users', users);
 app.use('/api/entries', entries);
 
+app.get('/', (req, res) => {
+    res.json({"message": "welcome to the youtube-extension api"});
+});
 
 app.listen(3000);
