@@ -3,6 +3,7 @@ const app = express();
 const users = require('./routes/users');
 const entries = require('./routes/entries');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // const morgan = require('morgan');
 // const bodyParser = require('body-parser');
@@ -21,6 +22,7 @@ mongoose.connect('mongodb://admin22:admin22@ds149914.mlab.com:49914/chrome-exten
 
 
 //app.use(bodyParser.text());
+app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 // app.use(morgan('tiny'));
