@@ -4,8 +4,12 @@ const users = require('./routes/users');
 const entries = require('./routes/entries');
 const mongoose = require('mongoose');
 
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
+// const morgan = require('morgan');
+// const bodyParser = require('body-parser');
+
+
+
+let port = process.env.port || 3000;
 
 
 mongoose.connect('mongodb://admin22:admin22@ds149914.mlab.com:49914/chrome-extension',{useNewUrlParser: true}, (err) => {
@@ -28,4 +32,4 @@ app.get('/', (req, res) => {
     res.json({"message": "welcome to the youtube-extension api"});
 });
 
-app.listen(3000);
+app.listen(port);
