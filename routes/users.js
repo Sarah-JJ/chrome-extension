@@ -41,7 +41,7 @@ router.post('/register', cors(), (req, res) => {
             user.save().then(data => {
                 console.log(data);
                 let token = jwt.sign({_id: data._id}, 'key', {expiresIn: '100d'});
-                res.header({'token': token}).send(token); //successful registration
+                res.json({'token': token, "user": data}); //successful registration
             }).catch(err => {
                 res.send(err);
             });
@@ -65,7 +65,7 @@ router.post('/login', cors(), (req, res) => {
                 bcrypt.compare(req.body.password, result.password, function (err, response) {
                     if (response) {
                         let token = jwt.sign({"_id": result._id}, 'key');
-                        res.header({token: token}).json({"message": "user logged in", "userId": result._id});
+                        res.json({"token": token, "message": "user logged in", "userId": result._id});
                     } else {
                         res.status(400).send('Wrong email/password pair');
                     }
