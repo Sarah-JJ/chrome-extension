@@ -4,6 +4,7 @@ const Joi = require('joi');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const checkAuth = require('../middleware/checkAuth');
+const cors = require('cors');
 const User = require('../models/user');
 
 
@@ -20,7 +21,7 @@ router.get('/:id', checkAuth, (req, res) => {
 });
 
 // adding a user
-router.post('/register', (req, res) => {
+router.post('/register', cors(), (req, res) => {
 
     let user = req.body;
     let validationResult = validateUser(user);
@@ -51,7 +52,7 @@ router.post('/register', (req, res) => {
 });
 
 
-router.post('/login', (req, res) => {
+router.post('/login', cors(), (req, res) => {
 
     let validationResult = validateUser(req.body);
 
