@@ -60,7 +60,7 @@ router.post('/login', (req, res) => {
     let validationResult = validateUser(req.body);
 
     if (validationResult.error) {
-        console.log(validationResult.error);
+        console.log(validationResult.error.details[0].message);
         res.status(400).send(validationResult.error);
     } else {
         User.findOne({email: req.body.email})
