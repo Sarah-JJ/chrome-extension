@@ -23,6 +23,9 @@ router.get('/:id', checkAuth, (req, res) => {
 router.post('/register', (req, res) => {
 
     let user = req.body;
+
+    console.log(user);
+
     let validationResult = validateUser(user);
 
     if (validationResult.error) {
@@ -84,6 +87,7 @@ router.post('/login', (req, res) => {
 router.put('/:id', checkAuth, (req, res) => {
 
     let user = req.body;
+
     let validationResult = validateUser(user);
 
     if (validationResult.error) {
