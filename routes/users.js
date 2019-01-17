@@ -71,12 +71,12 @@ router.post('/login', (req, res) => {
                         let token = jwt.sign({"_id": result._id}, 'key');
                         res.json({"token": token, "message": "user logged in", "userId": result._id});
                     } else {
-                        res.status(400).send('Wrong email/password pair');
+                        res.status(400).json({"message": 'login_error'});
                     }
                 });
             }).catch(err => {
             console.log(err);
-            res.status(400).send('Wrong email/password pair');
+            res.status(400).json({"message": 'login_error'});
         });
     }
 });
