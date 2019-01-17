@@ -42,6 +42,7 @@ router.post('/register', (req, res) => {
                 let token = jwt.sign({_id: data._id}, 'key', {expiresIn: '100d'});
                 res.json({'token': token, "user": data}); //successful registration
             }).catch(err => {
+                console.log(err);
                 res.send(err);
             });
 
@@ -56,6 +57,7 @@ router.post('/login', (req, res) => {
     let validationResult = validateUser(req.body);
 
     if (validationResult.error) {
+        console.log(validationResult.error);
         res.status(400).send(validationResult.error);
     } else {
         User.findOne({email: req.body.email})
