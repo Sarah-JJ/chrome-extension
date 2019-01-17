@@ -117,7 +117,7 @@ router.delete('/:id', checkAuth, (req, res) => {
 function validateUser(user) {
 
     const userSchema = {
-        'email': Joi.string().email({minDomainAtoms: 2}).required(),
+        // 'email': Joi.string().email({minDomainAtoms: 2}).required(),
         'password': Joi.string().min(6).required()
 
         // password 6 chars long, and must contain at least one numberic character
