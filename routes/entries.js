@@ -69,9 +69,9 @@ router.put('/:id', checkAuth, (req, res) => {
 // Deleting an entry
 router.delete('/:id', checkAuth, (req, res) => {
     Entry.remove({_id: req.params.id}).then(result => {
-        res.send(`Number of deleted entries is ${result.n}`)
+        res.json({"message": "deleted_successfully"})
     }).catch(err => {
-        res.status(400).send(err);
+        res.status(400).json({"message": "deleted_error", "err": err});
     });
 });
 
