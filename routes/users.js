@@ -30,7 +30,7 @@ router.post('/register', (req, res) => {
 
     if (validationResult.error) {
         console.log(validationResult.error.details[0].message);
-        res.status(400).send(validationResult.error.details[0].message);
+        res.status(400).json({"message": validationResult.error.details[0].message});
     } else {
 
         bcrypt.hash(user.password, 10, function (err, hash) {
@@ -48,9 +48,9 @@ router.post('/register', (req, res) => {
 
                 console.log(err.errmsg);
                 if(err.errmsg.includes("duplicate") || err.errmsg.includes("dup"))
-                    res.send("email_already_exists");
+                    res.json({"message": "email_already_exists"});
                 else
-                    res.send(err);
+                    res.json({"message": err});
             });
 
         });
