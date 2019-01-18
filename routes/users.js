@@ -29,7 +29,7 @@ router.post('/register', (req, res) => {
     let validationResult = validateUser(user);
 
     if (validationResult.error) {
-        console.log(validationResult.error);
+        console.log(validationResult.error.details[0].message);
         res.status(400).send(validationResult.error.details[0].message);
     } else {
 
@@ -45,8 +45,12 @@ router.post('/register', (req, res) => {
                 let token = jwt.sign({_id: data._id}, 'key', {expiresIn: '100d'});
                 res.json({'token': token, "user": data}); //successful registration
             }).catch(err => {
-                console.log(err);
-                res.send(err);
+
+                console.log(err.errmsg);
+                if(err.errmsg.includes("duplicate") || err.errmsg.includes("dup"))
+                    res.send("email_already_exists");
+                else
+                    res.send(err);
             });
 
         });
