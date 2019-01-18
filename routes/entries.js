@@ -10,8 +10,10 @@ const getYoutubeTitle = require('get-youtube-title');
 router.get('/', checkAuth, (req, res) => {
     Entry.find({user: req.userId})
         .sort({created: 'desc'}).exec(function (err, docs) {
-        if (!err)
+        if (!err) {
+            console.log(docs);
             res.send(docs);
+        }
         else res.send(err);
     });
 });
