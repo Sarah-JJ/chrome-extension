@@ -12,7 +12,7 @@ router.get('/', checkAuth, (req, res) => {
         .sort({created: 'desc'}).exec(function (err, docs) {
         if (!err) {
             console.log(docs);
-            res.send(docs);
+            res.json(docs);
         }
         else res.send(err);
     });
